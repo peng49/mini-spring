@@ -1,6 +1,6 @@
-package com.github.peng49.web.server;
+package com.github.peng49.framework.web.server;
 
-import com.github.peng49.web.servlet.TestServlet;
+import com.github.peng49.framework.web.servlet.DispatcherServlet;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.startup.Tomcat;
@@ -24,12 +24,12 @@ public class TomcatServer {
         context.addLifecycleListener(new Tomcat.FixContextListener());//生命周期监听器
 
         //实例化servlet,注册到tomcat内
-        TestServlet servlet = new TestServlet();
+        DispatcherServlet servlet = new DispatcherServlet();
 
-        Tomcat.addServlet(context, "test-servlet", servlet).setAsyncSupported(true);// 将servlet 注册到context容器内，并设置支持异步
+        Tomcat.addServlet(context, "dispatcher-servlet", servlet).setAsyncSupported(true);// 将servlet 注册到context容器内，并设置支持异步
 
         //添加一个uri映射
-        context.addServletMappingDecoded("/test", "test-servlet");
+        context.addServletMappingDecoded("/", "dispatcher-servlet");
 
         //将context 容器和 tomcat host 容器关联
         tomcat.getHost().addChild(context);

@@ -1,9 +1,9 @@
-package com.github.peng49.web.servlet;
+package com.github.peng49.framework.web.servlet;
 
 import javax.servlet.*;
 import java.io.IOException;
 
-public class TestServlet implements Servlet {
+public class DispatcherServlet implements Servlet {
     public void init(ServletConfig servletConfig) throws ServletException {
 
     }
@@ -13,7 +13,7 @@ public class TestServlet implements Servlet {
     }
 
     public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-        response.getWriter().println("servlet test");
+
     }
 
     public String getServletInfo() {
